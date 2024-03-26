@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Резервація аудиторій</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        text-align: center;
+    }
+    .button {
+        background-color: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+    .button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Резервація аудиторій</h2>
+    <a href="#" class="button" onclick="showSection('reservation-form')">Забронювати аудиторію</a>
+    <a href="#" class="button" onclick="showSection('my-reservations')">Мої бронювання</a>
+    <a href="#" class="button" onclick="showSection('available-rooms')">Доступні аудиторії</a>
+
+    <div id="reservation-form" style="display: none;">
+        <h3>Форма бронювання</h3>
+        <form action="/submit_reservation" method="post">
+            <label for="room">Аудиторія:</label>
+            <select id="room" name="room" required>
+                <option value="room1">Аудиторія 1</option>
+                <option value="room2">Аудиторія 2</option>
+                <option value="room3">Аудиторія 3</option>
+                <!-- Додайте інші варіанти аудиторій, які доступні -->
+            </select>
+            <label for="date">Дата:</label>
+            <input type="date" id="date" name="date" required>
+            <label for="time">Час:</label>
+            <input type="time" id="time" name="time" required>
+            <input type="submit" value="Забронювати">
+        </form>
+    </div>
+
+    <div id="my-reservations" style="display: none;">
+        <h3>Мої бронювання</h3>
+        <!-- Тут можна відобразити список бронювань користувача -->
+    </div>
+
+    <div id="available-rooms" style="display: none;">
+        <h3>Доступні аудиторії</h3>
+        <!-- Тут можна відобразити список доступних аудиторій -->
+    </div>
+</div>
+
+<script>
+    function showSection(sectionId) {
+        // Приховуємо всі секції
+        document.querySelectorAll('.container > div').forEach(function(section) {
+            section.style.display = 'none';
+        });
+        // Показуємо потрібну секцію
+        document.getElementById(sectionId).style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
